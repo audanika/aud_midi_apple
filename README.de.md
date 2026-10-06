@@ -10,6 +10,7 @@ Teil der aud_midi-Familie, siehe [aud_midi](https://github.com/audanika/aud_midi
 - BLE-MIDI über CoreBluetooth
 - MIDINetworkSession
 - Kleiner C-Shim kopiert Pakete von den CoreMIDI-Threads
+- BLE-Peripheral über CBPeripheralManager
 
 ## Stand
 
