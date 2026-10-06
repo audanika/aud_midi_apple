@@ -1,0 +1,21 @@
+name: aud_midi_apple
+description: "CoreMIDI, CoreBluetooth and network session backend for aud_midi on macOS and iOS"
+version: 0.0.0
+homepage: https://github.com/audanika/aud_midi_apple
+repository: https://github.com/audanika/aud_midi_apple
+topics:
+  - midi
+  - audio
+  - music
+platforms:
+  ios:
+  macos:
+
+environment:
+  sdk: ^3.12.2
+
+dev_dependencies:
+  dna_audanika: ^0.0.2
+  helix: ^1.10.0
+  lints: ^6.1.0
+  test: ^1.32.0
