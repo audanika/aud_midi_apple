@@ -1,0 +1,104 @@
+# @license
+# Copyright (c) Audanika
+#
+# Use of this source code is governed by terms that can be
+# found in the LICENSE file in the root of this package.
+
+# Bindings for the C shim and the CoreMIDI and CoreFoundation C functions
+# called from Dart. Regenerate with
+#
+#   dart run ffigen --config ffigen.yaml
+#
+# The functions resolve through the shim's code asset, which links
+# CoreMIDI and CoreFoundation.
+name: AudMidiAppleBindings
+description: Bindings for CoreMIDI and the aud_midi_apple C shim.
+output: lib/src/native/aud_midi_apple_bindings.g.dart
+language: c
+compiler-opts:
+  - -isysroot
+  - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  - -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
+headers:
+  entry-points:
+    - src/aud_midi_apple.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreMIDI.framework/Headers/MIDIServices.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFString.h
+ffi-native:
+  asset-id: package:aud_midi_apple/src/native/aud_midi_apple_bindings.g.dart
+exclude-all-by-default: true
+functions:
+  include:
+    - aud_midi_apple_.*
+    - MIDIGetNumberOfDevices
+    - MIDIGetDevice
+    - MIDIDeviceGetNumberOfEntities
+    - MIDIDeviceGetEntity
+    - MIDIEntityGetNumberOfSources
+    - MIDIEntityGetSource
+    - MIDIEntityGetNumberOfDestinations
+    - MIDIEntityGetDestination
+    - MIDIEntityGetDevice
+    - MIDIEndpointGetEntity
+    - MIDIGetNumberOfSources
+    - MIDIGetSource
+    - MIDIGetNumberOfDestinations
+    - MIDIGetDestination
+    - MIDIObjectGetIntegerProperty
+    - MIDIObjectSetIntegerProperty
+    - MIDIObjectGetStringProperty
+    - MIDIObjectSetStringProperty
+    - MIDIObjectFindByUniqueID
+    - MIDISourceCreateWithProtocol
+    - MIDIEndpointDispose
+    - MIDIPortConnectSource
+    - MIDIPortDisconnectSource
+    - MIDIFlushOutput
+    - CFStringGetLength
+    - CFStringGetCharacters
+    - CFStringCreateWithCharacters
+    - CFRelease
+  leaf:
+    include:
+      - aud_midi_apple_now
+      - aud_midi_apple_ump_size
+      - aud_midi_apple_read_packets
+      - aud_midi_apple_read_notifications
+      - aud_midi_apple_take_dropped
+      - CFStringGetLength
+      - CFStringGetCharacters
+globals:
+  include:
+    - kMIDIPropertyName
+    - kMIDIPropertyDisplayName
+    - kMIDIPropertyManufacturer
+    - kMIDIPropertyModel
+    - kMIDIPropertyUniqueID
+    - kMIDIPropertyOffline
+    - kMIDIPropertyPrivate
+    - kMIDIPropertyDriverOwner
+    - kMIDIPropertyProtocolID
+structs:
+  include:
+    - CFRange
+typedefs:
+  include:
+    - AudMidiAppleSignal
+    - AudMidiAppleBrowseCallback
+macros:
+  include:
+    - AUD_MIDI_APPLE_.*
+unnamed-enums:
+  include:
+    - AUD_MIDI_APPLE_.*
+preamble: |
+  // @license
+  // Copyright (c) Audanika
+  //
+  // Use of this source code is governed by terms that can be
+  // found in the LICENSE file in the root of this package.
+
+  // ignore_for_file: type=lint, unused_field, unused_element
+comments:
+  style: any
+  length: brief

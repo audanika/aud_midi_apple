@@ -8,10 +8,14 @@ import 'package:aud_midi_apple/aud_midi_apple.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Example', () {
-    group('greet()', () {
-      test('should greet the name', () {
-        expect(const Example('World').greet(), 'Hello World!');
+  group('MidiBonjourBrowser', () {
+    group('event kinds', () {
+      test('match the events of the C shim', () {
+        expect([
+          MidiBonjourBrowser.found,
+          MidiBonjourBrowser.lost,
+          MidiBonjourBrowser.failed,
+        ], equals([1, 2, 3]));
       });
     });
   });
