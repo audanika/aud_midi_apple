@@ -13,6 +13,7 @@ Teil der aud_midi-Familie, siehe [aud_midi](https://github.com/audmidi/aud_midi)
 - BLE-MIDI über CoreBluetooth und den Bluetooth-Treiber von CoreMIDI
 - `MIDINetworkSession` auf iOS, Bonjour-Suche und -Ankündigung
 - Kleiner C-Shim kopiert Pakete von den CoreMIDI-Threads
+- BLE-Peripheral über CBPeripheralManager
 
 ## Stand
 

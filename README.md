@@ -13,6 +13,7 @@ Part of the aud_midi family, see [aud_midi](https://github.com/audmidi/aud_midi)
 - BLE MIDI via CoreBluetooth and the CoreMIDI Bluetooth driver
 - `MIDINetworkSession` on iOS, Bonjour browsing and advertising
 - Small C shim copies packets off CoreMIDI threads
+- BLE peripheral through CBPeripheralManager
 
 ## State
 

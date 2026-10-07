@@ -15,6 +15,7 @@
 - Use git dependencies and set publish_to none
 - Implement the CoreMIDI backend for macOS and iOS
 - Reference the aud_midi packages on pub.dev and the audmidi organization
+- Plan BLE peripheral support
 
 ## 0.0.0 - 2026-10-06
 
