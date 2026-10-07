@@ -4,7 +4,7 @@ Das macOS- und iOS-Backend von aud_midi: CoreMIDI über FFI und einen
 kleinen C-Shim, Bluetooth-LE-MIDI über CoreBluetooth, die Netzwerk-Session
 von iOS und Bonjour.
 
-Teil der aud_midi-Familie, siehe [aud_midi](https://github.com/audanika/aud_midi).
+Teil der aud_midi-Familie, siehe [aud_midi](https://github.com/audmidi/aud_midi).
 
 ## Ziele
 
@@ -17,7 +17,7 @@ Teil der aud_midi-Familie, siehe [aud_midi](https://github.com/audanika/aud_midi
 ## Stand
 
 `AppleMidiBackend` (Name `coremidi`) implementiert `MidiBackend` aus
-[aud_midi_core](https://github.com/audanika/aud_midi_core):
+[aud_midi_core](https://github.com/audmidi/aud_midi_core):
 
 - Ports: Jede CoreMIDI-Quelle ist ein Eingang, jedes Ziel ein Ausgang,
   auch die virtuellen Endpoints anderer Apps und Geräte, die offline sind
@@ -119,7 +119,7 @@ die Entitlements `com.apple.security.device.bluetooth`,
 
 ## Dokumentation
 
-- [Der Plan der aud_midi-Familie](https://github.com/audanika/aud_midi_pm/blob/main/doc/2026-Q4/tickets/2026-10-06-aud_midi_01-initial-midi-implementation.md)
+- [Der Plan der aud_midi-Familie](https://github.com/audmidi/aud_midi_pm/blob/main/doc/2026-Q4/tickets/2026-10-06-aud_midi_01-initial-midi-implementation.md)
 - [Guides](doc/guides/)
 
 ## Code-Beispiele
