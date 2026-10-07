@@ -1,0 +1,114 @@
+# @license
+# Copyright (c) Audanika
+#
+# Use of this source code is governed by terms that can be
+# found in the LICENSE file in the root of this package.
+
+# Objective-C bindings for CoreBluetooth, MIDINetworkSession and the
+# Foundation classes they need. Regenerate with
+#
+#   dart run ffigen --config ffigen_objc.yaml
+#
+# ffigen also writes src/aud_midi_apple_objc.g.m with the block and
+# protocol trampolines; the build hook compiles it into the shim's library.
+# CoreBluetooth is not linked: the Dart side loads it at runtime, so that
+# apps without Bluetooth use carry no CoreBluetooth reference.
+name: AudMidiAppleObjcBindings
+description: Objective-C bindings for aud_midi_apple.
+language: objc
+output:
+  bindings: lib/src/native/aud_midi_apple_objc_bindings.g.dart
+  objc-bindings: src/aud_midi_apple_objc.g.m
+compiler-opts:
+  - -isysroot
+  - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+  - -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
+headers:
+  entry-points:
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreBluetooth.framework/Headers/CoreBluetooth.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreMIDI.framework/Headers/MIDINetworkSession.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSNotification.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSOperation.h
+    - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSUUID.h
+ffi-native:
+  asset-id: package:aud_midi_apple/src/native/aud_midi_apple_bindings.g.dart
+exclude-all-by-default: true
+external-versions:
+  ios:
+    min: 15.0.0
+  macos:
+    min: 12.0.0
+objc-interfaces:
+  include:
+    - CBManager
+    - CBCentralManager
+    - CBPeer
+    - CBPeripheral
+    - CBUUID
+    - MIDINetworkSession
+    - MIDINetworkHost
+    - MIDINetworkConnection
+    - NSNotificationCenter
+    - NSOperationQueue
+    - NSUUID
+  member-filter:
+    CBCentralManager:
+      include:
+        - alloc
+        - "initWithDelegate:queue:options:"
+        - "scanForPeripheralsWithServices:options:"
+        - stopScan
+        - "connectPeripheral:options:"
+        - "cancelPeripheralConnection:"
+        - "retrievePeripheralsWithIdentifiers:"
+        - state
+        - authorization
+    CBManager:
+      include:
+        - state
+        - authorization
+    CBPeer:
+      include:
+        - identifier
+    CBPeripheral:
+      include:
+        - name
+        - state
+    CBUUID:
+      include:
+        - "UUIDWithString:"
+    NSNotificationCenter:
+      include:
+        - defaultCenter
+        - "addObserverForName:object:queue:usingBlock:"
+        - "removeObserver:"
+    NSOperationQueue:
+      include:
+        - init
+        - new
+    NSUUID:
+      include:
+        - alloc
+        - "initWithUUIDString:"
+        - UUIDString
+objc-protocols:
+  include:
+    - CBCentralManagerDelegate
+functions:
+  include:
+    - dispatch_queue_create
+globals:
+  include:
+    - MIDINetworkNotificationSessionDidChange
+    - MIDINetworkNotificationContactsDidChange
+preamble: |
+  // @license
+  // Copyright (c) Audanika
+  //
+  // Use of this source code is governed by terms that can be
+  // found in the LICENSE file in the root of this package.
+
+  // ignore_for_file: type=lint, unused_field, unused_element
+comments:
+  style: any
+  length: brief
